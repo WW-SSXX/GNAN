@@ -44,6 +44,9 @@ Ablation study to evaluate the contribution of each module in GNAN.
 | Noise | 79.54±0.47 | 78.60±0.56 |
 | Brightness-Contrast & Noise | **80.33**±0.24 | **79.32**±0.39 |
 
+Ablation study on image perturbation methods. 
+Due to space constraints, this table serves as a supplement to the further experiments in the paper.
+
 ## Requirements
 ```
 python == 3.8
