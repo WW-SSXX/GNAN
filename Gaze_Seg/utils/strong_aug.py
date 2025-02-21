@@ -45,36 +45,3 @@ def apply_strong_augmentations(tensor, device):
     tensor = RandomBrightnessContrast(tensor)
     tensor = add_gaussian_noise(tensor, device)
     return tensor
-
-if __name__ == '__main__':
-    from PIL import Image
-    # 示例用法：
-    # 假设 tensor 维度是 BxCx224x224
-    img = Image.open('img.jpg')
-    img = torch.tensor(np.array(img) / 255, dtype=torch.float32)
-    print(img.shape)  # 输出的 tensor 维度应为 CxHxWx1
-    img = img.permute([2, 0, 1]).unsqueeze(0)
-    print(img.shape)  # 输出的 tensor 维度应为 CxHxWx1
-    # tensor = torch.rand(4, 3, 224, 224)  # B=4, C=3, H=224, W=224
-    augmented_tensor = apply_strong_augmentations(img) * 255
-    print(augmented_tensor.shape)  # 输出的 tensor 维度应为 BxCx224x224
-    augmented_img = np.array(augmented_tensor.squeeze(0).permute(1,2,0)).astype(np.uint8)
-    augmented_img = Image.fromarray(augmented_img)
-    augmented_img.save('augmented_img.jpg')
-
-    # from PIL import Image
-    # gaze = Image.open('gaze.png')
-    # gaze = torch.tensor(np.array(gaze) / 255)
-    # gaze = gaze.unsqueeze(0).unsqueeze(0)
-    # gaze = torch.nn.functional.interpolate(gaze, size=(7, 7), mode='bilinear')
-    # print(gaze)
-    # t1, t2 = 0.2, 0.6
-    # gaze = torch.where(gaze < t1, 0, gaze)
-    # gaze = torch.where(gaze > t2, 2, gaze)
-    # gaze = torch.where((gaze >= t1) & (gaze <= t2), 1, gaze) * 127
-    # print(gaze)
-    #
-    #
-    # gaze = np.array(gaze[0,0,:]).astype(np.uint8)
-    # gaze = Image.fromarray(gaze)
-    # gaze.save('gaze_resize.png')
