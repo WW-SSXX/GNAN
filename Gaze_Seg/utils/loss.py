@@ -139,21 +139,3 @@ def inner_contrastive_loss(feature, gaze, temperature):
     loss = torch.mean(loss)
     return loss
 
-
-if __name__ == '__main__':
-    device = torch.device('cpu')
-    # for i in range(1000):
-    feature, gaze = torch.randn(8, 640, 7, 7), torch.randn(8, 1, 224, 224)
-    feature, gaze = feature.to(device), gaze.to(device)
-    loss = inner_contrastive_loss(feature, gaze, 0.3, 0.6, 1)
-    print(loss)
-
-
-    # feature = torch.tensor([[[0.5, 1, 2], [1, 1, 1]], [[1, 2, 0.5], [0.5, 2, 1]]]).permute([2, 0, 1]).unsqueeze(0)
-    #
-    # gaze = torch.tensor([[[0.8], [0.5]], [[0.9], [0.1]]]).permute([2, 0, 1]).unsqueeze(0)
-    # print(feature.shape, gaze.shape)
-    #
-    # loss = inner_contrastive_loss(feature, gaze, 0.3, 0.6, 1)
-    # print(loss)
-
