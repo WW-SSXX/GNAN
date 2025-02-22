@@ -3,7 +3,7 @@
 This project contains the training and testing code for the paper, as well as the model weights trained according to our method.
 
 ## Method
-![1.0](Figure/fig-method.png)
+![1.0](Figure/fig-method1.png)
 
 ## Model Weights
 The performance of our method is expressed as the mean and standard deviation of three different seed runs.
